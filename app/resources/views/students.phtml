@@ -1,0 +1,35 @@
+<?php
+
+use App\Classes\Students\PDOModel;
+use App\ServiceModels\Redis;
+
+?>
+<!DOCTYPE html>
+<head>
+    <title>Students</title>
+</head>
+<body>
+    <div>
+        <h1>Students</h1>
+    </div>
+    <div>
+        <?php 
+            $students = \json_decode(Redis::getCache('students')) ?? PDOModel::getStudents();
+        ?>
+            <?php if (!count($students)): ?>
+                <b>No student(s) found!</b>
+            <?php else: ?>
+                
+                <?php foreach ($students as $student):?>
+                    <div>
+                        <dl>
+                            <dt>ID: <dd><?php echo  $student->id ?? $student['id'] ?>
+                            <dt>Name: <dd><?php echo $student->name ?? $student['name'] ?>
+                            <dt><a href="/student?id=<?php echo $student->id ?? $student['id'] ?>">Details: </a>
+                        </dl>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif ?>
+    </div>
+</body>
+</html>

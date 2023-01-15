@@ -1,0 +1,19 @@
+{
+    "name": "zeal/nemanja-app",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "./app"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nemanja Jocic zeaL",
+            "email": "nemanja_jocic@yahoo.com"
+        }
+    ],
+    "require": {
+        "predis/predis": "^2.0",
+        "vlucas/phpdotenv": "^5.5"
+    }
+}

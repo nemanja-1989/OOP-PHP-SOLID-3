@@ -1,0 +1,9 @@
+<?php
+
+use App\Classes\Students\Student;
+
+if(isset($_GET['id'])) {
+    echo Student::getStudentExtension($_GET['id']);
+}else {
+    echo "Student doesnt exits!";
+}
